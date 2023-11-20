@@ -138,6 +138,7 @@ class ProductRepositoryTest {
 
         Product p = product.get();
         assertEquals("짜장면", p.getName());
+        System.out.println("==============================");
 
     }
 
