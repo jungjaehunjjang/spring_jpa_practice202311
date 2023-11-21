@@ -85,35 +85,37 @@ class StudentPageRepositoryTest {
     }
 
     @Test
-    @DisplayName("이름 검색 + 페이징")
+    @DisplayName("이름검색 + 페이징")
     void testSearchAndPagination() {
         //given
-        int pageNo = 1;
+        int pageNo = 5;
         int size = 10;
-        Pageable pageInfo = PageRequest.of(pageNo -1, size);
+        Pageable pageInfo = PageRequest.of(pageNo - 1, size);
 
         //when
-        Page<Student> students = pageRepository.findByNameContaining("3", pageInfo);
+        Page<Student> students
+                = pageRepository.findByNameContaining("3", pageInfo);
 
         int totalPages = students.getTotalPages();
         long totalElements = students.getTotalElements();
         boolean next = students.hasNext();
         boolean prev = students.hasPrevious();
-    /*
-       페이징 처리 시에 버튼 알고리즘은 jpa에서 따로 제공하지 않기 때문에
-       버튼 배치 알고리즈을 수행할 클래스는 여전히 필요합니다.
-       제공되는 정보는 이전보다 많기 때문에, 좀 더 수월하게 처리가 가능합니다.
-     */
+
+        /*
+            페이징 처리 시에 버튼 알고리즘은 jpa에서 따로 제공하지 않기 때문에
+            버튼 배치 알고리즘을 수행할 클래스는 여전히 필요합니다.
+            제공되는 정보는 이전보다 많기 때문에, 좀 더 수월하게 처리가 가능합니다.
+         */
 
         //then
         System.out.println("\n\n\n");
         System.out.println("totalPages = " + totalPages);
         System.out.println("totalElements = " + totalElements);
-        System.out.println("next = " + next);
         System.out.println("prev = " + prev);
-
+        System.out.println("next = " + next);
         students.getContent().forEach(System.out::println);
         System.out.println("\n\n\n");
+
     }
 
 
