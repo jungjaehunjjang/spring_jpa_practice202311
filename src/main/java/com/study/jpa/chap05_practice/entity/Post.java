@@ -24,7 +24,10 @@ public class Post {
     private long id; // 글 번호
 
     @Column(nullable = false)
-    private String writer; // 작성장
+    private String writer; // 작성자
+
+    @Column(nullable = false)
+    private String title; // 제목
 
     private String content; // 내용
 
